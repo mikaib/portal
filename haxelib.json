@@ -1,0 +1,12 @@
+{
+  "name": "portal",
+  "url" : "https://github.com/mikaib/portal",
+  "license": "MIT",
+  "tags": ["cpp", "haxe", "extern", "native", "externs", "window"],
+  "description": "basic window creation library for haxe/hxcpp",
+  "version": "0.1.0",
+  "classPath": "Source/",
+  "releasenote": "Experimental.",
+  "contributors": ["mikaib"],
+  "dependencies": {}
+}
