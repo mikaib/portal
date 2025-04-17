@@ -1,0 +1,6 @@
+-L genesis
+-L portal
+
+-cp Source
+--main Main
+--cpp Binary/desktop

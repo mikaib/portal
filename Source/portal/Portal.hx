@@ -36,6 +36,24 @@ extern class Portal {
     @:native('pt_get_optimal_backend_type')
     public static function getOptimalBackendType(): PtBackendType;
 
+    @:native('pt_create_window')
+    public static function createWindow(title: String, width: Int, height: Int): PtWindow;
+
+    @:native('pt_destroy_window')
+    public static function destroyWindow(window: PtWindow): Void;
+
+    @:native('pt_should_window_close')
+    public static function shouldWindowClose(window: PtWindow): Int;
+
+    @:native('pt_swap_buffers')
+    public static function swapBuffers(window: PtWindow): Void;
+
+    @:native('pt_poll_events')
+    public static function pollEvents(window: PtWindow): Void;
+
+    @:native('pt_use_gl_context')
+    public static function useGLContext(window: PtWindow): Int;
+
     @:native('pt_init')
     public static function init(config: PtConfig): Void;
 
