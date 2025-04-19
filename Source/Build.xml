@@ -2,7 +2,8 @@
     <pragma once="true" />
 
     <set name="portal_native" value="${haxelib:portal}/Native" />
-    <set name="PT_GLFW" value="1" unless="PT_NO_GLFW" />
+    <set name="PT_GLFW" value="1" if="windows" unless="PT_NO_GLFW" />
+    <set name="PT_ANDROID" value="1" if="android" unless="PT_NO_ANDROID" />
 
     <echo value="PORTAL: ${portal_native}" />
 
@@ -22,7 +23,11 @@
         <files id="portal">
             <compilerflag value="-I${portal_native}" />
             <file name="${portal_native}/portal.c" />
-            <file name="${portal_native}/portal_glfw.c" />
+            <file name="${portal_native}/portal_glfw.c" if="PT_GLFW" />
+            <file name="${portal_native}/portal_android.c" if="PT_ANDROID" />
+
+            <compilerflag value="-DPT_GLFW" if="PT_GLFW" />
+            <compilerflag value="-DPT_ANDROID" if="PT_ANDROID" />
         </files>
 
         <files id="glfw">
