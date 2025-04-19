@@ -1,0 +1,10 @@
+-L genesis
+-L portal
+
+-D emscripten
+-D EMSCRIPTEN_SDK=D:/eeeeeee/emsdk
+-D HXCPP_LINK_EMSCRIPTEN_EXT=.html
+
+-cpp Binary/web
+-cp Source
+-main Main
