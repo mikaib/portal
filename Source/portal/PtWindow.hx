@@ -27,6 +27,14 @@ extern class NativePtWindow {
     inline public function destroy(): Void {
         Portal.destroyWindow(this);
     }
+
+    inline public function getWidth(): Int {
+        return Portal.getWindowWidth(this);
+    }
+
+    inline public function getHeight(): Int {
+        return Portal.getWindowHeight(this);
+    }
 }
 
 typedef PtWindow = cpp.Star<NativePtWindow>;

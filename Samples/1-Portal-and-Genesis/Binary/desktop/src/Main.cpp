@@ -12,6 +12,9 @@
 #ifndef INCLUDED_Main
 #include <Main.h>
 #endif
+#ifndef INCLUDED_Sys
+#include <Sys.h>
+#endif
 #ifndef INCLUDED_genesis_GsMainloop
 #include <genesis/GsMainloop.h>
 #endif
@@ -21,6 +24,9 @@
 #ifndef INCLUDED_genesis__GsManagedData_GsManagedData_Impl_
 #include <genesis/_GsManagedData/GsManagedData_Impl_.h>
 #endif
+#ifndef INCLUDED_haxe_Log
+#include <haxe/Log.h>
+#endif
 
 HX_DEFINE_STACK_FRAME(_hx_pos_e47a9afac0942eb9_16_new,"Main","new",0x6616a5cb,"Main.new","Main.hx",16,0x087e5c05)
 static const int _hx_array_data_332f6459_1[] = {
@@ -29,20 +35,21 @@ static const int _hx_array_data_332f6459_1[] = {
 static const float _hx_array_data_332f6459_2[] = {
 	0.0,0.5,0.0,1.0,0.0,0.0,1.0,-0.5,-0.5,0.0,0.0,1.0,0.0,1.0,0.5,-0.5,0.0,0.0,0.0,1.0,1.0,
 };
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_67_initWindow,"Main","initWindow",0xee596d15,"Main.initWindow","Main.hx",67,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_79_destroyWindow,"Main","destroyWindow",0xf8fc15b5,"Main.destroyWindow","Main.hx",79,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_84_initGraphics,"Main","initGraphics",0xddf92530,"Main.initGraphics","Main.hx",84,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_129_destroyGraphics,"Main","destroyGraphics",0xd50f35d0,"Main.destroyGraphics","Main.hx",129,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_148_frame,"Main","frame",0x82b6be58,"Main.frame","Main.hx",148,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_160_loop,"Main","loop",0xec6f8e99,"Main.loop","Main.hx",160,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_173_init,"Main","init",0xea732345,"Main.init","Main.hx",173,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_180_destroy,"Main","destroy",0x88b793e5,"Main.destroy","Main.hx",180,0x087e5c05)
-HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_186_main,"Main","main",0xed0e206e,"Main.main","Main.hx",186,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_93_initWindow,"Main","initWindow",0xee596d15,"Main.initWindow","Main.hx",93,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_106_destroyWindow,"Main","destroyWindow",0xf8fc15b5,"Main.destroyWindow","Main.hx",106,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_111_initGraphics,"Main","initGraphics",0xddf92530,"Main.initGraphics","Main.hx",111,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_156_destroyGraphics,"Main","destroyGraphics",0xd50f35d0,"Main.destroyGraphics","Main.hx",156,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_175_frame,"Main","frame",0x82b6be58,"Main.frame","Main.hx",175,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_187_loop,"Main","loop",0xec6f8e99,"Main.loop","Main.hx",187,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_215_init,"Main","init",0xea732345,"Main.init","Main.hx",215,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_222_destroy,"Main","destroy",0x88b793e5,"Main.destroy","Main.hx",222,0x087e5c05)
+HX_LOCAL_STACK_FRAME(_hx_pos_e47a9afac0942eb9_228_main,"Main","main",0xed0e206e,"Main.main","Main.hx",228,0x087e5c05)
 
 void Main_obj::__construct(){
             	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_16_new)
-HXLINE(  42)		this->fragmentShaderSource = HX_("\r\n        #version 460 core\r\n\r\n        in vec4 vColour;\r\n        out vec4 fragColor;\r\n\r\n        void main() {\r\n            fragColor = vColour;\r\n        }\r\n    ",32,6c,02,04);
-HXLINE(  29)		this->vertexShaderSource = HX_("\r\n        #version 460 core\r\n\r\n        layout(location = 0) in vec3 aPosition;\r\n        layout(location = 1) in vec4 aColour;\r\n        out vec4 vColour;\r\n\r\n        void main() {\r\n            gl_Position = vec4(aPosition, 1.0);\r\n            vColour = aColour;\r\n        }\r\n    ",75,d8,05,d8);
+HXLINE(  91)		this->isActive = true;
+HXLINE(  65)		this->fragmentShaderSource = HX_("\r\n        #version 460 core\r\n\r\n        in vec4 vColour;\r\n        out vec4 fragColor;\r\n\r\n        void main() {\r\n            fragColor = vColour;\r\n        }\r\n    ",32,6c,02,04);
+HXLINE(  52)		this->vertexShaderSource = HX_("\r\n        #version 460 core\r\n\r\n        layout(location = 0) in vec3 aPosition;\r\n        layout(location = 1) in vec4 aColour;\r\n        out vec4 vColour;\r\n\r\n        void main() {\r\n            gl_Position = vec4(aPosition, 1.0);\r\n            vColour = aColour;\r\n        }\r\n    ",75,d8,05,d8);
 HXLINE(  25)		this->indexData = ::Array_obj< int >::fromData( _hx_array_data_332f6459_1,3);
 HXLINE(  18)		this->vertexData = ::Array_obj< float >::fromData( _hx_array_data_332f6459_2,21);
             	}
@@ -63,69 +70,70 @@ bool Main_obj::_hx_isInstanceOf(int inClassId) {
 }
 
 void Main_obj::initWindow(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_67_initWindow)
-HXLINE(  68)		this->ptBackend = pt_create_backend(pt_get_optimal_backend_type());
-HXLINE(  70)		this->ptConfig = pt_create_config();
-HXLINE(  71)		(*(this->ptConfig)).backend = this->ptBackend;
-HXLINE(  73)		pt_init(this->ptConfig);
-HXLINE(  75)		this->window = pt_create_window(HX_("Genesis [1 - Hello Triangle]",82,bf,f6,eb),600,600);
-HXLINE(  76)		pt_use_gl_context(this->window);
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_93_initWindow)
+HXLINE(  94)		::haxe::Log_obj::trace(HX_("Hello from Genesis!",a1,72,54,c7),::hx::SourceInfo(HX_("Source/Main.hx",b1,67,fd,ea),94,HX_("Main",59,64,2f,33),HX_("initWindow",20,ef,d1,56)));
+HXLINE(  95)		this->ptBackend = pt_create_backend(pt_get_optimal_backend_type());
+HXLINE(  97)		this->ptConfig = pt_create_config();
+HXLINE(  98)		(*(this->ptConfig)).backend = this->ptBackend;
+HXLINE( 100)		pt_init(this->ptConfig);
+HXLINE( 102)		this->window = pt_create_window(HX_("Genesis [1 - Hello Triangle]",82,bf,f6,eb),600,600);
+HXLINE( 103)		pt_use_gl_context(this->window);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,initWindow,(void))
 
 void Main_obj::destroyWindow(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_79_destroyWindow)
-HXLINE(  80)		pt_destroy_window(this->window);
-HXLINE(  81)		pt_shutdown();
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_106_destroyWindow)
+HXLINE( 107)		pt_destroy_window(this->window);
+HXLINE( 108)		pt_shutdown();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,destroyWindow,(void))
 
 void Main_obj::initGraphics(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_84_initGraphics)
-HXLINE(  86)		this->backend = gs_create_backend(gs_get_optimal_backend_type());
-HXLINE(  89)		this->config = gs_create_config();
-HXLINE(  90)		(*(this->config)).backend = this->backend;
-HXLINE(  93)		gs_init(this->config);
-HXLINE(  96)		this->commandList = gs_create_command_list();
-HXLINE(  99)		this->vertexShader = gs_create_shader(GS_SHADER_TYPE_VERTEX,this->vertexShaderSource.utf8_str());
-HXLINE( 100)		this->fragmentShader = gs_create_shader(GS_SHADER_TYPE_FRAGMENT,this->fragmentShaderSource.utf8_str());
-HXLINE( 103)		this->program = gs_create_program();
-HXLINE( 104)		gs_program_attach_shader(this->program,this->vertexShader);
-HXLINE( 105)		gs_program_attach_shader(this->program,this->fragmentShader);
-HXLINE( 106)		gs_program_build(this->program);
-HXLINE( 109)		this->layout = gs_create_layout();
-HXLINE( 110)		{
-HXLINE( 110)			 GsVtxLayout * _this = this->layout;
-HXDLIN( 110)			gs_layout_add(_this,0,GS_ATTRIB_TYPE_FLOAT,3);
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_111_initGraphics)
+HXLINE( 113)		this->backend = gs_create_backend(gs_get_optimal_backend_type());
+HXLINE( 116)		this->config = gs_create_config();
+HXLINE( 117)		(*(this->config)).backend = this->backend;
+HXLINE( 120)		gs_init(this->config);
+HXLINE( 123)		this->commandList = gs_create_command_list();
+HXLINE( 126)		this->vertexShader = gs_create_shader(GS_SHADER_TYPE_VERTEX,this->vertexShaderSource.utf8_str());
+HXLINE( 127)		this->fragmentShader = gs_create_shader(GS_SHADER_TYPE_FRAGMENT,this->fragmentShaderSource.utf8_str());
+HXLINE( 130)		this->program = gs_create_program();
+HXLINE( 131)		gs_program_attach_shader(this->program,this->vertexShader);
+HXLINE( 132)		gs_program_attach_shader(this->program,this->fragmentShader);
+HXLINE( 133)		gs_program_build(this->program);
+HXLINE( 136)		this->layout = gs_create_layout();
+HXLINE( 137)		{
+HXLINE( 137)			 GsVtxLayout * _this = this->layout;
+HXDLIN( 137)			gs_layout_add(_this,0,GS_ATTRIB_TYPE_FLOAT,3);
             		}
-HXLINE( 111)		{
-HXLINE( 111)			 GsVtxLayout * _this1 = this->layout;
-HXDLIN( 111)			gs_layout_add(_this1,1,GS_ATTRIB_TYPE_FLOAT,4);
+HXLINE( 138)		{
+HXLINE( 138)			 GsVtxLayout * _this1 = this->layout;
+HXDLIN( 138)			gs_layout_add(_this1,1,GS_ATTRIB_TYPE_FLOAT,4);
             		}
-HXLINE( 112)		gs_layout_build(this->layout);
-HXLINE( 115)		this->pipeline = gs_create_pipeline();
-HXLINE( 116)		(*(this->pipeline)).layout = this->layout;
-HXLINE( 117)		(*(this->pipeline)).program = this->program;
-HXLINE( 118)		(*(this->pipeline)).msaa_samples = 4;
-HXLINE( 121)		this->vertexBuffer = gs_create_buffer(GS_BUFFER_TYPE_VERTEX,GS_BUFFER_INTENT_DRAW_STATIC);
-HXLINE( 122)		{
-HXLINE( 122)			 GsBuffer * _this2 = this->vertexBuffer;
-HXDLIN( 122)			::Array< float > data = this->vertexData;
-HXDLIN( 122)			::cpp::Pointer< void > ptr = ( (::cpp::Pointer< float >)(::cpp::Pointer_obj::arrayElem(data,0)) )->reinterpret();
-HXDLIN( 122)			 ::genesis::_GsManagedData::GsManagedDataHolder data1 = ::genesis::_GsManagedData::GsManagedData_Impl__obj::_new(ptr->ptr,(data->length * 4));
-HXDLIN( 122)			gs_buffer_set_data(_this2,data1->ptr,data1->size);
+HXLINE( 139)		gs_layout_build(this->layout);
+HXLINE( 142)		this->pipeline = gs_create_pipeline();
+HXLINE( 143)		(*(this->pipeline)).layout = this->layout;
+HXLINE( 144)		(*(this->pipeline)).program = this->program;
+HXLINE( 145)		(*(this->pipeline)).msaa_samples = 4;
+HXLINE( 148)		this->vertexBuffer = gs_create_buffer(GS_BUFFER_TYPE_VERTEX,GS_BUFFER_INTENT_DRAW_STATIC);
+HXLINE( 149)		{
+HXLINE( 149)			 GsBuffer * _this2 = this->vertexBuffer;
+HXDLIN( 149)			::Array< float > data = this->vertexData;
+HXDLIN( 149)			::cpp::Pointer< void > ptr = ( (::cpp::Pointer< float >)(::cpp::Pointer_obj::arrayElem(data,0)) )->reinterpret();
+HXDLIN( 149)			 ::genesis::_GsManagedData::GsManagedDataHolder data1 = ::genesis::_GsManagedData::GsManagedData_Impl__obj::_new(ptr->ptr,(data->length * 4));
+HXDLIN( 149)			gs_buffer_set_data(_this2,data1->ptr,data1->size);
             		}
-HXLINE( 125)		this->indexBuffer = gs_create_buffer(GS_BUFFER_TYPE_INDEX,GS_BUFFER_INTENT_DRAW_STATIC);
-HXLINE( 126)		{
-HXLINE( 126)			 GsBuffer * _this3 = this->indexBuffer;
-HXDLIN( 126)			::Array< int > data2 = this->indexData;
-HXDLIN( 126)			::cpp::Pointer< void > ptr1 = ( (::cpp::Pointer< int >)(::cpp::Pointer_obj::arrayElem(data2,0)) )->reinterpret();
-HXDLIN( 126)			 ::genesis::_GsManagedData::GsManagedDataHolder data3 = ::genesis::_GsManagedData::GsManagedData_Impl__obj::_new(ptr1->ptr,(data2->length * 4));
-HXDLIN( 126)			gs_buffer_set_data(_this3,data3->ptr,data3->size);
+HXLINE( 152)		this->indexBuffer = gs_create_buffer(GS_BUFFER_TYPE_INDEX,GS_BUFFER_INTENT_DRAW_STATIC);
+HXLINE( 153)		{
+HXLINE( 153)			 GsBuffer * _this3 = this->indexBuffer;
+HXDLIN( 153)			::Array< int > data2 = this->indexData;
+HXDLIN( 153)			::cpp::Pointer< void > ptr1 = ( (::cpp::Pointer< int >)(::cpp::Pointer_obj::arrayElem(data2,0)) )->reinterpret();
+HXDLIN( 153)			 ::genesis::_GsManagedData::GsManagedDataHolder data3 = ::genesis::_GsManagedData::GsManagedData_Impl__obj::_new(ptr1->ptr,(data2->length * 4));
+HXDLIN( 153)			gs_buffer_set_data(_this3,data3->ptr,data3->size);
             		}
             	}
 
@@ -133,60 +141,61 @@ HXDLIN( 126)			gs_buffer_set_data(_this3,data3->ptr,data3->size);
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,initGraphics,(void))
 
 void Main_obj::destroyGraphics(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_129_destroyGraphics)
-HXLINE( 131)		gs_destroy_command_list(this->commandList);
-HXLINE( 132)		gs_destroy_pipeline(this->pipeline);
-HXLINE( 133)		gs_destroy_layout(this->layout);
-HXLINE( 134)		gs_destroy_buffer(this->vertexBuffer);
-HXLINE( 135)		gs_destroy_buffer(this->indexBuffer);
-HXLINE( 136)		gs_destroy_shader(this->vertexShader);
-HXLINE( 137)		gs_destroy_shader(this->fragmentShader);
-HXLINE( 138)		gs_destroy_program(this->program);
-HXLINE( 141)		gs_shutdown();
-HXLINE( 144)		gs_destroy_backend(this->backend);
-HXLINE( 145)		gs_destroy_config(this->config);
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_156_destroyGraphics)
+HXLINE( 158)		gs_destroy_command_list(this->commandList);
+HXLINE( 159)		gs_destroy_pipeline(this->pipeline);
+HXLINE( 160)		gs_destroy_layout(this->layout);
+HXLINE( 161)		gs_destroy_buffer(this->vertexBuffer);
+HXLINE( 162)		gs_destroy_buffer(this->indexBuffer);
+HXLINE( 163)		gs_destroy_shader(this->vertexShader);
+HXLINE( 164)		gs_destroy_shader(this->fragmentShader);
+HXLINE( 165)		gs_destroy_program(this->program);
+HXLINE( 168)		gs_shutdown();
+HXLINE( 171)		gs_destroy_backend(this->backend);
+HXLINE( 172)		gs_destroy_config(this->config);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,destroyGraphics,(void))
 
 void Main_obj::frame(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_148_frame)
-HXLINE( 149)		{
-HXLINE( 149)			 GsCommandList * _this = this->commandList;
-HXDLIN( 149)			gs_command_list_begin(_this);
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_175_frame)
+HXLINE( 176)		{
+HXLINE( 176)			 GsCommandList * _this = this->commandList;
+HXDLIN( 176)			gs_command_list_begin(_this);
             		}
-HXLINE( 150)		{
-HXLINE( 150)			 GsCommandList * _this1 = this->commandList;
-HXDLIN( 150)			gs_set_viewport(_this1,0,0,600,600);
+HXLINE( 177)		{
+HXLINE( 177)			 GsCommandList * _this1 = this->commandList;
+HXDLIN( 177)			int width = pt_get_window_width(this->window);
+HXDLIN( 177)			gs_set_viewport(_this1,0,0,width,pt_get_window_height(this->window));
             		}
-HXLINE( 151)		{
-HXLINE( 151)			 GsCommandList * _this2 = this->commandList;
-HXDLIN( 151)			gs_clear(_this2,(GsClearFlags)(1 | 2),( (Float)(0) ),( (Float)(0) ),( (Float)(0) ),( (Float)(1) ));
+HXLINE( 178)		{
+HXLINE( 178)			 GsCommandList * _this2 = this->commandList;
+HXDLIN( 178)			gs_clear(_this2,(GsClearFlags)(1 | 2),( (Float)(0) ),( (Float)(0) ),( (Float)(0) ),( (Float)(1) ));
             		}
-HXLINE( 152)		{
-HXLINE( 152)			 GsCommandList * _this3 = this->commandList;
-HXDLIN( 152)			gs_use_pipeline(_this3,this->pipeline);
+HXLINE( 179)		{
+HXLINE( 179)			 GsCommandList * _this3 = this->commandList;
+HXDLIN( 179)			gs_use_pipeline(_this3,this->pipeline);
             		}
-HXLINE( 153)		{
-HXLINE( 153)			 GsCommandList * _this4 = this->commandList;
-HXDLIN( 153)			gs_use_buffer(_this4,this->vertexBuffer);
+HXLINE( 180)		{
+HXLINE( 180)			 GsCommandList * _this4 = this->commandList;
+HXDLIN( 180)			gs_use_buffer(_this4,this->vertexBuffer);
             		}
-HXLINE( 154)		{
-HXLINE( 154)			 GsCommandList * _this5 = this->commandList;
-HXDLIN( 154)			gs_use_buffer(_this5,this->indexBuffer);
+HXLINE( 181)		{
+HXLINE( 181)			 GsCommandList * _this5 = this->commandList;
+HXDLIN( 181)			gs_use_buffer(_this5,this->indexBuffer);
             		}
-HXLINE( 155)		{
-HXLINE( 155)			 GsCommandList * _this6 = this->commandList;
-HXDLIN( 155)			gs_draw_indexed(_this6,3);
+HXLINE( 182)		{
+HXLINE( 182)			 GsCommandList * _this6 = this->commandList;
+HXDLIN( 182)			gs_draw_indexed(_this6,3);
             		}
-HXLINE( 156)		{
-HXLINE( 156)			 GsCommandList * _this7 = this->commandList;
-HXDLIN( 156)			gs_command_list_end(_this7);
+HXLINE( 183)		{
+HXLINE( 183)			 GsCommandList * _this7 = this->commandList;
+HXDLIN( 183)			gs_command_list_end(_this7);
             		}
-HXLINE( 157)		{
-HXLINE( 157)			 GsCommandList * _this8 = this->commandList;
-HXDLIN( 157)			gs_command_list_submit(_this8);
+HXLINE( 184)		{
+HXLINE( 184)			 GsCommandList * _this8 = this->commandList;
+HXDLIN( 184)			gs_command_list_submit(_this8);
             		}
             	}
 
@@ -194,44 +203,60 @@ HXDLIN( 157)			gs_command_list_submit(_this8);
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,frame,(void))
 
 void Main_obj::loop(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_160_loop)
-HXLINE( 161)		if ((pt_should_window_close(this->window) == 1)) {
-HXLINE( 162)			this->destroy();
-HXLINE( 163)			return;
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_187_loop)
+HXLINE( 188)		if ((pt_should_be_active(this->window) != 1)) {
+HXLINE( 189)			if (this->isActive) {
+HXLINE( 190)				this->isActive = false;
+HXLINE( 191)				pt_deactivate(this->window);
+HXLINE( 192)				::haxe::Log_obj::trace(HX_("Window deactivated",a0,e5,b1,11),::hx::SourceInfo(HX_("Source/Main.hx",b1,67,fd,ea),192,HX_("Main",59,64,2f,33),HX_("loop",64,a6,b7,47)));
+            			}
+HXLINE( 195)			::Sys_obj::sleep(((Float)0.1));
+HXLINE( 196)			return;
             		}
-HXLINE( 166)		this->frame();
-HXLINE( 168)		gs_frame();
-HXLINE( 169)		pt_swap_buffers(this->window);
-HXLINE( 170)		pt_poll_events(this->window);
+            		else {
+HXLINE( 197)			if (!(this->isActive)) {
+HXLINE( 198)				this->isActive = true;
+HXLINE( 199)				pt_activate(this->window);
+HXLINE( 200)				::haxe::Log_obj::trace(HX_("Window activated",41,d9,dc,35),::hx::SourceInfo(HX_("Source/Main.hx",b1,67,fd,ea),200,HX_("Main",59,64,2f,33),HX_("loop",64,a6,b7,47)));
+            			}
+            		}
+HXLINE( 203)		if ((pt_should_window_close(this->window) == 1)) {
+HXLINE( 204)			this->destroy();
+HXLINE( 205)			return;
+            		}
+HXLINE( 208)		this->frame();
+HXLINE( 210)		gs_frame();
+HXLINE( 211)		pt_swap_buffers(this->window);
+HXLINE( 212)		pt_poll_events(this->window);
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,loop,(void))
 
 void Main_obj::init(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_173_init)
-HXLINE( 174)		this->initWindow();
-HXLINE( 175)		this->initGraphics();
-HXLINE( 177)		::genesis::GsMainloop_obj::start(this->loop_dyn());
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_215_init)
+HXLINE( 216)		this->initWindow();
+HXLINE( 217)		this->initGraphics();
+HXLINE( 219)		::genesis::GsMainloop_obj::start(this->loop_dyn());
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,init,(void))
 
 void Main_obj::destroy(){
-            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_180_destroy)
-HXLINE( 181)		gs_stop_mainloop();
-HXLINE( 182)		this->destroyGraphics();
-HXLINE( 183)		this->destroyWindow();
+            	HX_STACKFRAME(&_hx_pos_e47a9afac0942eb9_222_destroy)
+HXLINE( 223)		gs_stop_mainloop();
+HXLINE( 224)		this->destroyGraphics();
+HXLINE( 225)		this->destroyWindow();
             	}
 
 
 HX_DEFINE_DYNAMIC_FUNC0(Main_obj,destroy,(void))
 
 void Main_obj::main(){
-            	HX_GC_STACKFRAME(&_hx_pos_e47a9afac0942eb9_186_main)
-HXLINE( 187)		 ::Main app =  ::Main_obj::__alloc( HX_CTX );
-HXLINE( 188)		app->init();
+            	HX_GC_STACKFRAME(&_hx_pos_e47a9afac0942eb9_228_main)
+HXLINE( 229)		 ::Main app =  ::Main_obj::__alloc( HX_CTX );
+HXLINE( 230)		app->init();
             	}
 
 
@@ -275,6 +300,7 @@ void Main_obj::__Mark(HX_MARK_PARAMS)
 	HX_MARK_MEMBER_NAME(fragmentShader,"fragmentShader");
 	HX_MARK_MEMBER_NAME(vertexBuffer,"vertexBuffer");
 	HX_MARK_MEMBER_NAME(indexBuffer,"indexBuffer");
+	HX_MARK_MEMBER_NAME(isActive,"isActive");
 	HX_MARK_END_CLASS();
 }
 
@@ -297,6 +323,7 @@ void Main_obj::__Visit(HX_VISIT_PARAMS)
 	HX_VISIT_MEMBER_NAME(fragmentShader,"fragmentShader");
 	HX_VISIT_MEMBER_NAME(vertexBuffer,"vertexBuffer");
 	HX_VISIT_MEMBER_NAME(indexBuffer,"indexBuffer");
+	HX_VISIT_MEMBER_NAME(isActive,"isActive");
 }
 
 ::hx::Val Main_obj::__Field(const ::String &inName,::hx::PropertyAccess inCallProp)
@@ -311,6 +338,9 @@ void Main_obj::__Visit(HX_VISIT_PARAMS)
 		break;
 	case 7:
 		if (HX_FIELD_EQ(inName,"destroy") ) { return ::hx::Val( destroy_dyn() ); }
+		break;
+	case 8:
+		if (HX_FIELD_EQ(inName,"isActive") ) { return ::hx::Val( isActive ); }
 		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"indexData") ) { return ::hx::Val( indexData ); }
@@ -349,6 +379,9 @@ bool Main_obj::__GetStatic(const ::String &inName, Dynamic &outValue, ::hx::Prop
 ::hx::Val Main_obj::__SetField(const ::String &inName,const ::hx::Val &inValue,::hx::PropertyAccess inCallProp)
 {
 	switch(inName.length) {
+	case 8:
+		if (HX_FIELD_EQ(inName,"isActive") ) { isActive=inValue.Cast< bool >(); return inValue; }
+		break;
 	case 9:
 		if (HX_FIELD_EQ(inName,"indexData") ) { indexData=inValue.Cast< ::Array< int > >(); return inValue; }
 		break;
@@ -383,6 +416,7 @@ void Main_obj::__GetFields(Array< ::String> &outFields)
 	outFields->push(HX_("fragmentShader",15,4f,dc,39));
 	outFields->push(HX_("vertexBuffer",84,af,a9,70));
 	outFields->push(HX_("indexBuffer",b2,65,a6,f5));
+	outFields->push(HX_("isActive",50,dd,af,6e));
 	super::__GetFields(outFields);
 };
 
@@ -405,6 +439,7 @@ static ::hx::StorageInfo Main_obj_sMemberStorageInfo[] = {
 	{::hx::fsUnknown /*  GsShader * */ ,(int)offsetof(Main_obj,fragmentShader),HX_("fragmentShader",15,4f,dc,39)},
 	{::hx::fsUnknown /*  GsBuffer * */ ,(int)offsetof(Main_obj,vertexBuffer),HX_("vertexBuffer",84,af,a9,70)},
 	{::hx::fsUnknown /*  GsBuffer * */ ,(int)offsetof(Main_obj,indexBuffer),HX_("indexBuffer",b2,65,a6,f5)},
+	{::hx::fsBool,(int)offsetof(Main_obj,isActive),HX_("isActive",50,dd,af,6e)},
 	{ ::hx::fsUnknown, 0, null()}
 };
 static ::hx::StaticInfo *Main_obj_sStaticStorageInfo = 0;
@@ -415,6 +450,7 @@ static ::String Main_obj_sMemberFields[] = {
 	HX_("indexData",5c,0e,71,fe),
 	HX_("vertexShaderSource",64,fb,81,44),
 	HX_("fragmentShaderSource",d0,71,8a,f6),
+	HX_("isActive",50,dd,af,6e),
 	HX_("initWindow",20,ef,d1,56),
 	HX_("destroyWindow",8a,2c,86,20),
 	HX_("initGraphics",fb,7f,1e,b7),

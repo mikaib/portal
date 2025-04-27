@@ -1,3 +1,4 @@
+HXCPP_DEBUG_LINK=1
 genesis=0.1.0
 haxe=4.3.3
 haxe3=1

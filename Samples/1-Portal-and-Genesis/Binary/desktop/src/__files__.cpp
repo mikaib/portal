@@ -6,6 +6,8 @@ const char *__hxcpp_all_files[] = {
 #ifdef HXCPP_DEBUGGER
 "?",
 "C:\\HaxeToolkit\\haxe\\std/cpp/_std/Std.hx",
+"C:\\HaxeToolkit\\haxe\\std/cpp/_std/Sys.hx",
+"C:\\HaxeToolkit\\haxe\\std/cpp/_std/haxe/Log.hx",
 "C:\\HaxeToolkit\\haxe\\std/haxe/iterators/ArrayIterator.hx",
 "Main.hx",
 "genesis/GsMainloop.hx",
@@ -17,6 +19,8 @@ const char *__hxcpp_all_files_fullpath[] = {
 #ifdef HXCPP_DEBUGGER
 "C:\\projects\\portal\\Samples\\1-Portal-and-Genesis\\?",
 "C:\\HaxeToolkit\\haxe\\std\\cpp\\_std\\Std.hx",
+"C:\\HaxeToolkit\\haxe\\std\\cpp\\_std\\Sys.hx",
+"C:\\HaxeToolkit\\haxe\\std\\cpp\\_std\\haxe\\Log.hx",
 "C:\\HaxeToolkit\\haxe\\std\\haxe\\iterators\\ArrayIterator.hx",
 "C:\\projects\\portal\\Samples\\1-Portal-and-Genesis\\Source\\Main.hx",
 "C:\\mana25\\genesis\\Source\\genesis\\GsMainloop.hx",
@@ -28,9 +32,11 @@ const char *__hxcpp_all_classes[] = {
 #ifdef HXCPP_DEBUGGER
 "Main",
 "Std",
+"Sys",
 "genesis.GsMainloop",
 "genesis._GsManagedData.GsManagedDataHolder",
 "genesis._GsManagedData.GsManagedData_Impl_",
+"haxe.Log",
 "haxe.iterators.ArrayIterator",
 #endif
  0 };

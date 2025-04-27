@@ -1,0 +1,14 @@
+-L genesis
+-L portal
+
+-D ANDROID_NDK_ROOT=C:\Users\mikai\AppData\Local\Android\android-ndk-r21e
+-D ANDROID_NDK_DIR=C:\Users\mikai\AppData\Local\Android\android-ndk-r21e
+-D ANDROID_SDK=C:\Users\mikai\AppData\Local\Android\Sdk
+-D ANDROID_SETUP=true
+-D ANDROID_SDK_ROOT=C:\Users\mikai\AppData\Local\Android
+-D android
+-D HXCPP_ARM64
+
+-cp Source
+--main Main
+--cpp Binary/android

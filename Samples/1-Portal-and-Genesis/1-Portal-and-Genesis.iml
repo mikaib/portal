@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="HAXE_MODULE" version="4">
+  <component name="HaxeModuleSettingsStorage">
+    <option name="buildConfig" value="1" />
+    <option name="hxmlPath" value="$MODULE_DIR$/Desktop.hxml" />
+    <option name="outputFolder" value="C:\projects\portal\Samples\1-Portal-and-Genesis/out" />
+  </component>
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$" />
+    <orderEntry type="jdk" jdkName="Haxe toolkit" jdkType="Haxe toolkit" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: genesis:0.1.0 [dev]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../mana25/genesis/Source" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../../mana25/genesis/Source" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: portal:0.0.0 [dev]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../Source" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../Source" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+    <orderEntry type="module-library" scope="PROVIDED">
+      <library name="Haxelib: genkit_miniaudio:1.1.0 [git]">
+        <CLASSES>
+          <root url="file://$MODULE_DIR$/../../../../HaxeToolkit/haxe/lib/genkit_miniaudio/git/source" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES>
+          <root url="file://$MODULE_DIR$/../../../../HaxeToolkit/haxe/lib/genkit_miniaudio/git/source" />
+        </SOURCES>
+      </library>
+    </orderEntry>
+  </component>
+</module>

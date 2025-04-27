@@ -51,6 +51,12 @@ extern class Portal {
     @:native('pt_poll_events')
     public static function pollEvents(window: PtWindow): Void;
 
+    @:native('pt_get_window_width')
+    public static function getWindowWidth(window: PtWindow): Int;
+
+    @:native('pt_get_window_height')
+    public static function getWindowHeight(window: PtWindow): Int;
+
     @:native('pt_use_gl_context')
     public static function useGLContext(window: PtWindow): Int;
 
@@ -90,6 +96,34 @@ class _Portal {
 
     public static function init(config: PtConfig): Void {
         NativePortal.init(config);
+    }
+
+    public static function createWindow(title: String, width: Int, height: Int): PtWindow {
+        return NativePortal.createWindow(title, width, height);
+    }
+
+    public static function destroyWindow(window: PtWindow): Void {
+        NativePortal.destroyWindow(window);
+    }
+
+    public static function shouldWindowClose(window: PtWindow): Int {
+        return NativePortal.shouldWindowClose(window);
+    }
+
+    public static function swapBuffers(window: PtWindow): Void {
+        NativePortal.swapBuffers(window);
+    }
+
+    public static function pollEvents(window: PtWindow): Void {
+        NativePortal.pollEvents(window);
+    }
+
+    public static function getWindowWidth(window: PtWindow): Int {
+        return NativePortal.getWindowWidth(window);
+    }
+
+    public static function getWindowHeight(window: PtWindow): Int {
+        return NativePortal.getWindowHeight(window);
     }
 
     public static function shutdown(): Void {

@@ -26,8 +26,17 @@
             <file name="${portal_native}/portal_glfw.c" if="PT_GLFW" />
             <file name="${portal_native}/portal_android.c" if="PT_ANDROID" />
 
+            <compilerflag value="-I${ANDROID_NDK_ROOT}/sources/android/native_app_glue" if="PT_ANDROID" />
+            <file name="${ANDROID_NDK_ROOT}/sources/android/native_app_glue/android_native_app_glue.c" if="PT_ANDROID" />
+
             <compilerflag value="-DPT_GLFW" if="PT_GLFW" />
             <compilerflag value="-DPT_ANDROID" if="PT_ANDROID" />
+        </files>
+
+        <files id="glfw-includes">
+            <compilerflag value="-I${portal_native}/glfw/include" />
+            <compilerflag value="-I${portal_native}/glfw/src" />
+            <compilerflag value="-DPT_GLFW" if="PT_GLFW" />
         </files>
 
         <files id="glfw">
@@ -102,7 +111,8 @@
         <target id="haxe">
             <compilerflag value="-I${portal_native}" />
             <files id="portal" />
-            <files id="glfw" if="PT_GLFW" />
+            <files id="glfw" if="PT_GLFW" unless="emscripten" />
+            <files id="glfw-includes" if="PT_GLFW && emscripten" />
         </target>
 
         <target id="haxe" tool="linker" toolid="exe" if="windows">

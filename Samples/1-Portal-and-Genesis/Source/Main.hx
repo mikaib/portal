@@ -26,7 +26,30 @@ class Main {
         0, 1, 2
     ];
 
+    #if (emscripten || android)
     public var vertexShaderSource: String = "
+        #version 100
+        attribute vec3 aPosition;
+        attribute vec4 aColour;
+        varying vec4 vColour;
+
+        void main() {
+            gl_Position = vec4(aPosition, 1.0);
+            vColour = aColour;
+        }
+    ";
+
+    public var fragmentShaderSource: String = "
+        #version 100
+        precision mediump float;
+        varying vec4 vColour;
+
+        void main() {
+            gl_FragColor = vColour;
+        }
+    ";
+    #else
+        public var vertexShaderSource: String = "
         #version 460 core
 
         layout(location = 0) in vec3 aPosition;
@@ -39,7 +62,7 @@ class Main {
         }
     ";
 
-    public var fragmentShaderSource: String = "
+        public var fragmentShaderSource: String = "
         #version 460 core
 
         in vec4 vColour;
@@ -49,6 +72,8 @@ class Main {
             fragColor = vColour;
         }
     ";
+    #end
+
 
     public var window: PtWindow;
     public var ptConfig: PtConfig;
@@ -63,8 +88,10 @@ class Main {
     public var fragmentShader: GsShader;
     public var vertexBuffer: GsBuffer;
     public var indexBuffer: GsBuffer;
+    public var isActive: Bool = true;
 
     public function initWindow() {
+        trace("Hello from Genesis!");
         ptBackend = Portal.createBackend(Portal.getOptimalBackendType());
 
         ptConfig = Portal.createConfig();
@@ -147,7 +174,7 @@ class Main {
 
     public function frame() {
         commandList.begin();
-        commandList.setViewport(0, 0, 600, 600);
+        commandList.setViewport(0, 0, window.getWidth(), window.getHeight());
         commandList.clear(GS_CLEAR_COLOR | GS_CLEAR_DEPTH);
         commandList.usePipeline(pipeline);
         commandList.useBuffer(vertexBuffer);
@@ -158,6 +185,21 @@ class Main {
     }
 
     public function loop() {
+        if (!window.shouldBeActive()) {
+            if (isActive) {
+                isActive = false;
+                window.deactivate();
+                trace("Window deactivated");
+            }
+
+            Sys.sleep(0.1);
+            return;
+        } else if (!isActive) {
+            isActive = true;
+            window.activate();
+            trace("Window activated");
+        }
+
         if (window.shouldWindowClose()) {
             destroy();
             return;

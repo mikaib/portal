@@ -71,6 +71,7 @@ class HXCPP_CLASS_ATTRIBUTES Main_obj : public ::hx::Object
 		 GsShader * fragmentShader;
 		 GsBuffer * vertexBuffer;
 		 GsBuffer * indexBuffer;
+		bool isActive;
 		void initWindow();
 		::Dynamic initWindow_dyn();
 
