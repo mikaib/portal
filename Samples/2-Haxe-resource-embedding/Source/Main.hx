@@ -12,18 +12,26 @@ import portal.PtWindow;
 import portal.PtConfig;
 import portal.PtBackend;
 import portal.Portal;
+import genesis.GsTexture;
+import stb.Image;
+import haxe.Resource;
+import genesis.GsTextureFormat;
+import haxe.io.Bytes;
+import genesis.GsUniformLocation;
 
 class Main {
 
     public var vertexData: Array<cpp.Float32> = [
-        // x,    y,   z,   r,   g,   b,   a
-        0.0,  0.5, 0.0, 1.0, 0.0, 0.0, 1.0,
-        -0.5, -0.5, 0.0, 0.0, 1.0, 0.0, 1.0,
-        0.5, -0.5, 0.0, 0.0, 0.0, 1.0, 1.0
+        // x,    y,   z,   r,   g,   b,   a,   u,   v
+        -0.5,  0.5, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 0.0, // Top-left
+        0.5,  0.5, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 0.0, // Top-right
+        -0.5, -0.5, 0.0, 1.0, 1.0, 1.0, 1.0, 0.0, 1.0, // Bottom-left
+        0.5, -0.5, 0.0, 1.0, 1.0, 1.0, 1.0, 1.0, 1.0  // Bottom-right
     ];
 
     public var indexData: Array<Int> = [
-        0, 1, 2
+        0, 1, 2,  // First triangle
+        2, 1, 3   // Second triangle
     ];
 
     #if (emscripten || android)
@@ -31,11 +39,17 @@ class Main {
         #version 100
         attribute vec3 aPosition;
         attribute vec4 aColour;
+        attribute vec2 aTexCoord;
         varying vec4 vColour;
+        varying vec2 vTexCoord;
+
+        uniform float uTime;
 
         void main() {
             gl_Position = vec4(aPosition, 1.0);
+            gl_Position.x   += sin(uTime);
             vColour = aColour;
+            vTexCoord = aTexCoord;
         }
     ";
 
@@ -43,9 +57,11 @@ class Main {
         #version 100
         precision mediump float;
         varying vec4 vColour;
+        varying vec2 vTexCoord;
+        uniform sampler2D uTexture;
 
         void main() {
-            gl_FragColor = vColour;
+            gl_FragColor = texture2D(uTexture, vTexCoord) * vColour;
         }
     ";
     #else
@@ -54,11 +70,17 @@ class Main {
 
         layout(location = 0) in vec3 aPosition;
         layout(location = 1) in vec4 aColour;
+        layout(location = 2) in vec2 aTexCoord;
         out vec4 vColour;
+        out vec2 vTexCoord;
+
+        uniform float uTime;
 
         void main() {
             gl_Position = vec4(aPosition, 1.0);
+            gl_Position.x += sin(uTime);
             vColour = aColour;
+            vTexCoord = aTexCoord;
         }
     ";
 
@@ -66,10 +88,13 @@ class Main {
         #version 460 core
 
         in vec4 vColour;
+        in vec2 vTexCoord;
         out vec4 fragColor;
 
+        uniform sampler2D uTexture;
+
         void main() {
-            fragColor = vColour;
+            fragColor = texture(uTexture, vTexCoord) * vColour;
         }
     ";
     #end
@@ -88,6 +113,9 @@ class Main {
     public var fragmentShader: GsShader;
     public var vertexBuffer: GsBuffer;
     public var indexBuffer: GsBuffer;
+    public var texture: GsTexture;
+    public var uTexture: GsUniformLocation;
+    public var uTime: GsUniformLocation;
 
     public function initWindow() {
         trace("Hello from Genesis!");
@@ -135,6 +163,7 @@ class Main {
         layout = Genesis.createLayout();
         layout.add(0, GS_ATTRIB_TYPE_FLOAT, 3);  // position
         layout.add(1, GS_ATTRIB_TYPE_FLOAT, 4);  // color
+        layout.add(2, GS_ATTRIB_TYPE_FLOAT, 2);  // texcoord
         layout.build();
 
         // pipeline
@@ -150,10 +179,21 @@ class Main {
         // index buffer
         indexBuffer = Genesis.createBuffer(GS_BUFFER_TYPE_INDEX, GS_BUFFER_INTENT_DRAW_STATIC);
         indexBuffer.setData(indexData);
+
+        // texture
+        var texBytes = Resource.getBytes("image");
+        var texData = Image.load_from_memory(texBytes.getData(), texBytes.length, 4);
+        texture = Genesis.createTextureSimple(texData.w, texData.h, GsTextureFormat.GS_TEXTURE_FORMAT_RGBA8);
+        texture.setData(Bytes.ofData(texData.bytes));
+
+        // uniforms
+        uTexture = program.getUniformLocation("uTexture");
+        uTime = program.getUniformLocation("uTime");
     }
 
     public function destroyGraphics() {
         // destroy resources
+        texture.destroy();
         commandList.destroy();
         pipeline.destroy();
         layout.destroy();
@@ -174,11 +214,14 @@ class Main {
     public function frame() {
         commandList.begin();
         commandList.setViewport(0, 0, window.getWidth(), window.getHeight());
+        commandList.setUniformInt(uTexture, 0);
+        commandList.setUniformFloat(uTime, Sys.time() % (Math.PI * 2));
         commandList.clear(GS_CLEAR_COLOR | GS_CLEAR_DEPTH);
         commandList.usePipeline(pipeline);
         commandList.useBuffer(vertexBuffer);
         commandList.useBuffer(indexBuffer);
-        commandList.drawIndexed(3);
+        commandList.useTexture(texture, 0);
+        commandList.drawIndexed(6);
         commandList.end();
         commandList.submit();
     }

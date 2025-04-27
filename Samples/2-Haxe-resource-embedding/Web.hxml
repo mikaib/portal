@@ -1,5 +1,6 @@
 -L genesis
 -L portal
+-L linc_stb
 
 -D emscripten
 -D EMSDK=D:/eeeeeee/emsdk
@@ -9,3 +10,5 @@
 -cpp Binary/web
 -cp Source
 -main Main
+
+--resource Assets/cat.jpg@image

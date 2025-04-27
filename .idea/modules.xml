@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/Samples/2-Haxe-resource-embedding/2-Haxe-resource-embedding.iml" filepath="$PROJECT_DIR$/Samples/2-Haxe-resource-embedding/2-Haxe-resource-embedding.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../genesis-new/genesis-new.iml" filepath="$PROJECT_DIR$/../genesis-new/genesis-new.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../manalts/manalts.iml" filepath="$PROJECT_DIR$/../manalts/manalts.iml" />
       <module fileurl="file://$PROJECT_DIR$/portal.iml" filepath="$PROJECT_DIR$/portal.iml" />
     </modules>
   </component>

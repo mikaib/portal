@@ -1,0 +1,11 @@
+-L genesis
+-L portal
+-L linc_stb
+
+-D HXCPP_DEBUG_LINK
+
+-cp Source
+--main Main
+--cpp Binary/desktop
+
+--resource Assets/cat.jpg@image
