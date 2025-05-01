@@ -3,7 +3,7 @@
   "url" : "https://github.com/mikaib/portal",
   "license": "MIT",
   "tags": ["cpp", "haxe", "extern", "native", "externs", "window"],
-  "description": "basic window creation library for haxe/hxcpp",
+  "description": "simple window creation and management abstraction for haxe/hxcpp",
   "version": "0.1.0",
   "classPath": "Source/",
   "releasenote": "Experimental.",
