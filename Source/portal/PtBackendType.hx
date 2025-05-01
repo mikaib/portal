@@ -10,4 +10,7 @@ private extern class NativePtBackendType {}
 extern enum abstract PtBackendType(NativePtBackendType) {
     @:native('PT_BACKEND_GLFW')
     public var PT_BACKEND_GLFW;
+
+    @:native('PT_BACKEND_ANDROID')
+    public var PT_BACKEND_ANDROID;
 }

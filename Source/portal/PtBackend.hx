@@ -7,6 +7,7 @@ package portal;
 @:structAccess
 extern class NativePtBackend {
     public var type: PtBackendType;
+    public var kind: PtBackendKind;
 
     inline public function destroy(): Void{
         Portal.destroyBackend(this);
