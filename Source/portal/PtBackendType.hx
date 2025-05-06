@@ -1,8 +1,8 @@
 package portal;
 
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')
-@:include('portal.h')
-@:native('PtBackendType')
+@:include('genesis.h')
+@:native('cpp.Struct<PtBackendType>')
 private extern class NativePtBackendType {}
 
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')

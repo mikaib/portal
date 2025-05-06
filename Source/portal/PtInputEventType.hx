@@ -1,8 +1,8 @@
 package portal;
 
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')
-@:include('portal.h')
-@:native('PtInputEventType')
+@:include('genesis.h')
+@:native('cpp.Struct<PtInputEventType>')
 private extern class NativePtInputEventType {}
 
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')

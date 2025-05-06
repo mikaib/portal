@@ -3,6 +3,7 @@
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/../genesis-new" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/../genesis-new/Native" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/../manalts" vcs="Git" />
     <mapping directory="$PROJECT_DIR$" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Native" vcs="Git" />
     <mapping directory="$PROJECT_DIR$/Native/glfw" vcs="Git" />
