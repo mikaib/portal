@@ -14,6 +14,9 @@ extern enum abstract PtInputEventType(NativePtInputEventType) {
     @:native('PT_INPUT_EVENT_KEYDOWN')
     public var PT_INPUT_EVENT_KEYDOWN;
 
+    @:native('PT_INPUT_EVENT_KEYPRESS')
+    public var PT_INPUT_EVENT_KEYPRESS;
+
     @:native('PT_INPUT_EVENT_TEXT')
     public var PT_INPUT_EVENT_TEXT;
 

@@ -6,7 +6,7 @@ package portal;
 @:native('PtInputEventMouseData')
 @:unreflective
 @:structAccess
-extern class NativePtInputEventMouseData {
+extern class PtInputEventMouseData {
     public var button: Int;
     public var modifiers: Int;
     public var x: Int;
@@ -14,4 +14,3 @@ extern class NativePtInputEventMouseData {
     public var dx: Int;
     public var dy: Int;
 }
-typedef PtInputEventMouseData = cpp.Star<NativePtInputEventMouseData>;

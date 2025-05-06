@@ -65,6 +65,13 @@ extern class Portal {
 
     @:native('pt_shutdown')
     public static function shutdown(): Void;
+
+    @:native('pt_get_input_event_count')
+    public static function getInputEventCount(window: PtWindow): Int;
+
+    @:native('pt_pull_input_event')
+    public static function pullInputEvent(window: PtWindow): PtInputEventData;
+
 }
 
 #if (PT_STUB)

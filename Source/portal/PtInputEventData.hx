@@ -3,7 +3,7 @@ package portal;
 @:native('PtInputEventData')
 @:unreflective
 @:structAccess
-extern class NativePtInputEventData {
+extern class PtInputEventData {
     // Common data
     public var type: PtInputEventType;
     public var timestamp: cpp.Float64;
@@ -14,4 +14,3 @@ extern class NativePtInputEventData {
     public var touch: PtInputEventTouchData;
     public var text: PtInputEventTextData;
 }
-typedef PtInputEventData = cpp.Star<NativePtInputEventData>;

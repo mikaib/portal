@@ -35,6 +35,14 @@ extern class NativePtWindow {
     inline public function getHeight(): Int {
         return Portal.getWindowHeight(this);
     }
+
+    inline public function getInputEventCount(): Int {
+        return Portal.getInputEventCount(this);
+    }
+
+    inline public function pullInputEvent(): PtInputEventData {
+        return Portal.pullInputEvent(this);
+    }
 }
 
 typedef PtWindow = cpp.Star<NativePtWindow>;

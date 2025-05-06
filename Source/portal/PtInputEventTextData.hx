@@ -3,7 +3,6 @@ package portal;
 @:native('PtInputEventTextData')
 @:unreflective
 @:structAccess
-extern class NativePtInputEventTextData {
-    public var text: cpp.ConstCharStar;
+extern class PtInputEventTextData {
+    public var codepoint: cpp.UInt32;
 }
-typedef PtInputEventTextData = cpp.Star<NativePtInputEventTextData>;

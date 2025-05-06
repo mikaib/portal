@@ -6,8 +6,7 @@ package portal;
 @:native('PtInputEventKeyData')
 @:unreflective
 @:structAccess
-extern class NativePtInputEventKeyData {
+extern class PtInputEventKeyData {
     public var key: Int;
     public var modifiers: Int;
 }
-typedef PtInputEventKeyData = cpp.Star<NativePtInputEventKeyData>;

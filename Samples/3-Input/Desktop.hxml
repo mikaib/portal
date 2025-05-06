@@ -1,0 +1,8 @@
+-L genesis
+-L portal
+
+-D HXCPP_DEBUG_LINK
+
+-cp Source
+--main Main
+--cpp Binary/desktop
