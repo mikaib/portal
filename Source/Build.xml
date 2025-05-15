@@ -138,6 +138,12 @@
             <files id="glfw-includes" if="PT_GLFW && emscripten" />
         </target>
 
+        <target id="haxe" if="emscripten">
+            <compilerflag value="-I${portal_native}" />
+            <files id="portal" />
+            <files id="glfw-includes" if="PT_GLFW" />
+        </target>
+
         <linker id='exe' exe='em++' if="emscripten">
             <flag value='-s' />
             <flag value='WASM=1' />
