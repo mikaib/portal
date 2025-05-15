@@ -2,8 +2,9 @@
     <pragma once="true" />
 
     <set name="portal_native" value="${haxelib:portal}/Native" />
-    <set name="PT_GLFW" value="1" if="windows || emscripten" unless="PT_NO_GLFW" />
+    <set name="PT_GLFW" value="1" if="windows || linux || emscripten" unless="PT_NO_GLFW" />
     <set name="PT_ANDROID" value="1" if="android" unless="PT_NO_ANDROID" />
+    <set name="PT_POSIX" value="1" if="PT_WAYLAND || PT_X11" unless="PT_NO_AUTO_POSIX" />
 
     <echo value="PORTAL: ${portal_native}" />
 
@@ -51,6 +52,18 @@
             <compilerflag value="-D_GLFW_WAYLAND" if="PT_WAYLAND" />
             <compilerflag value="-D_GLFW_NULL" if="PT_GLFW_NULL" />
 
+            <!-- shared -->
+            <file name="${portal_native}/glfw/src/context.c" />
+            <file name="${portal_native}/glfw/src/egl_context.c" />
+            <file name="${portal_native}/glfw/src/glx_context.c" />
+            <file name="${portal_native}/glfw/src/init.c" />
+            <file name="${portal_native}/glfw/src/input.c" />
+            <file name="${portal_native}/glfw/src/monitor.c" />
+            <file name="${portal_native}/glfw/src/osmesa_context.c" />
+            <file name="${portal_native}/glfw/src/platform.c" />
+            <file name="${portal_native}/glfw/src/vulkan.c" />
+            <file name="${portal_native}/glfw/src/window.c" />
+
             <!-- macos -->
             <file name="${portal_native}/glfw/src/cocoa_init.m" if="macos" />
             <file name="${portal_native}/glfw/src/cocoa_joystick.m" if="macos" />
@@ -94,32 +107,35 @@
 
             <!-- linux -->
             <file name="${portal_native}/glfw/src/linux_joystick.c" if="linux" />
-
-            <!-- shared -->
-            <file name="${portal_native}/glfw/src/context.c" />
-            <file name="${portal_native}/glfw/src/egl_context.c" />
-            <file name="${portal_native}/glfw/src/glx_context.c" />
-            <file name="${portal_native}/glfw/src/init.c" />
-            <file name="${portal_native}/glfw/src/input.c" />
-            <file name="${portal_native}/glfw/src/monitor.c" />
-            <file name="${portal_native}/glfw/src/osmesa_context.c" />
-            <file name="${portal_native}/glfw/src/platform.c" />
-            <file name="${portal_native}/glfw/src/vulkan.c" />
-            <file name="${portal_native}/glfw/src/window.c" />
         </files>
 
-        <target id="haxe">
+        <target id="haxe" tool="linker" toolid="exe" if="windows">
             <compilerflag value="-I${portal_native}" />
             <files id="portal" />
             <files id="glfw" if="PT_GLFW" unless="emscripten" />
             <files id="glfw-includes" if="PT_GLFW && emscripten" />
-        </target>
 
-        <target id="haxe" tool="linker" toolid="exe" if="windows">
             <lib name="gdi32.lib" />
             <lib name="shell32.lib" />
             <lib name="winmm.lib" />
             <lib name="opengl32.lib" />
+        </target>
+
+        <target id="haxe" if="android">
+            <compilerflag value="-I${portal_native}" />
+            <files id="portal" />
+        </target>
+
+        <target id="haxe" if="linux">
+            <section if="PT_WAYLAND">
+                <lib name="-lwayland-client" />
+                <lib name="-lwayland-cursor" />
+            </section>
+
+            <compilerflag value="-I${portal_native}" />
+            <files id="portal" />
+            <files id="glfw" if="PT_GLFW" unless="emscripten" />
+            <files id="glfw-includes" if="PT_GLFW && emscripten" />
         </target>
 
         <linker id='exe' exe='em++' if="emscripten">

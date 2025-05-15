@@ -28,12 +28,20 @@ extern class NativePtWindow {
         Portal.destroyWindow(this);
     }
 
-    inline public function getWidth(): Int {
+    inline public function getWindowWidth(): Int {
         return Portal.getWindowWidth(this);
     }
 
-    inline public function getHeight(): Int {
+    inline public function getWindowHeight(): Int {
         return Portal.getWindowHeight(this);
+    }
+
+    inline public function getFramebufferWidth(): Int {
+        return Portal.getFramebufferWidth(this);
+    }
+
+    inline public function getFramebufferHeight(): Int {
+        return Portal.getFramebufferHeight(this);
     }
 
     inline public function getInputEventCount(): Int {

@@ -3,45 +3,12 @@
   <component name="HaxeModuleSettingsStorage">
     <option name="buildConfig" value="1" />
     <option name="hxmlPath" value="$MODULE_DIR$/Desktop.hxml" />
-    <option name="outputFolder" value="E:\portal\Samples\2-Haxe-resource-embedding/out" />
+    <option name="outputFolder" value="$MODULE_DIR$/../../out/production/2-Haxe-resource-embedding" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
     <content url="file://$MODULE_DIR$" />
     <orderEntry type="jdk" jdkName="Haxe 4.3.6" jdkType="Haxe toolkit" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: genesis:0.1.0 [dev]">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../../genesis-new/Source" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../../../genesis-new/Source" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: portal:0.1.0 [dev]">
-        <CLASSES>
-          <root url="file://$MODULE_DIR$/../../Source" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://$MODULE_DIR$/../../Source" />
-        </SOURCES>
-      </library>
-    </orderEntry>
-    <orderEntry type="module-library" scope="PROVIDED">
-      <library name="Haxelib: linc_stb:0.0.0 [git]">
-        <CLASSES>
-          <root url="file://C:/HaxeToolkit/haxe/lib/linc_stb/git" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES>
-          <root url="file://C:/HaxeToolkit/haxe/lib/linc_stb/git" />
-        </SOURCES>
-      </library>
-    </orderEntry>
   </component>
 </module>

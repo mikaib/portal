@@ -57,6 +57,12 @@ extern class Portal {
     @:native('pt_get_window_height')
     public static function getWindowHeight(window: PtWindow): Int;
 
+    @:native('pt_get_framebuffer_width')
+    public static function getFramebufferWidth(window: PtWindow): Int;
+
+    @:native('pt_get_framebuffer_height')
+    public static function getFramebufferHeight(window: PtWindow): Int;
+
     @:native('pt_use_gl_context')
     public static function useGLContext(window: PtWindow): Int;
 

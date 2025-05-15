@@ -172,7 +172,7 @@ class Main {
 
     public function frame() {
         commandList.begin();
-        commandList.setViewport(0, 0, window.getWidth(), window.getHeight());
+        commandList.setViewport(0, 0, window.getFramebufferWidth(), window.getFramebufferHeight());
         commandList.clear(GS_CLEAR_COLOR | GS_CLEAR_DEPTH);
         commandList.usePipeline(pipeline);
         commandList.useBuffer(vertexBuffer);

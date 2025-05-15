@@ -213,7 +213,7 @@ class Main {
 
     public function frame() {
         commandList.begin();
-        commandList.setViewport(0, 0, window.getWidth(), window.getHeight());
+        commandList.setViewport(0, 0, window.getFramebufferWidth(), window.getFramebufferHeight());
         commandList.setUniformInt(uTexture, 0);
         commandList.setUniformFloat(uTime, Sys.time() % (Math.PI * 2));
         commandList.clear(GS_CLEAR_COLOR | GS_CLEAR_DEPTH);
