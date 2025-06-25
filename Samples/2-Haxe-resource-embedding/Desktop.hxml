@@ -3,6 +3,7 @@
 -L linc_stb
 
 -D HXCPP_DEBUG_LINK
+--debug
 
 -cp Source
 --main Main

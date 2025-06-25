@@ -34,9 +34,41 @@ class Main {
         2, 1, 3   // Second triangle
     ];
 
-    #if (emscripten || android)
-    public var vertexShaderSource: String = "
-        #version 100
+    #if (android)
+     public var vertexShaderSource: String = "#version 320 es
+        precision highp float;
+
+        in vec3 aPosition;
+        in vec4 aColour;
+        in vec2 aTexCoord;
+        out vec4 vColour;
+        out vec2 vTexCoord;
+
+        uniform float uTime;
+
+        void main() {
+            gl_Position = vec4(aPosition, 1.0);
+            gl_Position.x += sin(uTime);
+            vColour = aColour;
+            vTexCoord = aTexCoord;
+        }
+    ";
+
+    public var fragmentShaderSource: String = "#version 320 es
+        precision highp float;
+
+        in vec4 vColour;
+        in vec2 vTexCoord;
+        out vec4 fragColor;
+
+        uniform sampler2D uTexture;
+
+        void main() {
+            fragColor = texture(uTexture, vTexCoord) * vColour;
+        }
+    ";
+    #elseif (emscripten)
+    public var vertexShaderSource: String = "#version 100
         attribute vec3 aPosition;
         attribute vec4 aColour;
         attribute vec2 aTexCoord;
@@ -47,14 +79,14 @@ class Main {
 
         void main() {
             gl_Position = vec4(aPosition, 1.0);
-            gl_Position.x   += sin(uTime);
+            gl_Position.x += sin(uTime);
+            gl_Position.y += cos(uTime) * 0.5;
             vColour = aColour;
             vTexCoord = aTexCoord;
         }
     ";
 
-    public var fragmentShaderSource: String = "
-        #version 100
+    public var fragmentShaderSource: String = "#version 100
         precision mediump float;
         varying vec4 vColour;
         varying vec2 vTexCoord;
@@ -65,8 +97,7 @@ class Main {
         }
     ";
     #else
-        public var vertexShaderSource: String = "
-        #version 460 core
+        public var vertexShaderSource: String = "#version 460 core
 
         layout(location = 0) in vec3 aPosition;
         layout(location = 1) in vec4 aColour;
@@ -84,8 +115,7 @@ class Main {
         }
     ";
 
-        public var fragmentShaderSource: String = "
-        #version 460 core
+        public var fragmentShaderSource: String = "#version 460 core
 
         in vec4 vColour;
         in vec2 vTexCoord;
