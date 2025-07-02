@@ -6,8 +6,6 @@
     <set name="PT_ANDROID" value="1" if="android" unless="PT_NO_ANDROID" />
     <set name="PT_POSIX" value="1" if="PT_WAYLAND || PT_X11" unless="PT_NO_AUTO_POSIX" />
 
-    <echo value="PORTAL: ${portal_native}" />
-
     <section>
         <files id="haxe">
             <compilerflag value="-I${portal_native}" />

@@ -3,7 +3,7 @@
   <component name="HaxeModuleSettingsStorage">
     <option name="buildConfig" value="1" />
     <option name="hxmlPath" value="$MODULE_DIR$/Build.hxml" />
-    <option name="outputFolder" value="$MODULE_DIR$/out/production/portal" />
+    <option name="outputFolder" value="$MODULE_DIR$/../mana_framework/Binary/production/portal" />
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
