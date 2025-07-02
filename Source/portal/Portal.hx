@@ -107,10 +107,6 @@ class _Portal {
         return NativePortal.getOptimalBackendType();
     }
 
-    public static function init(config: PtConfig): Void {
-        NativePortal.init(config);
-    }
-
     public static function createWindow(title: String, width: Int, height: Int): PtWindow {
         return NativePortal.createWindow(title, width, height);
     }
@@ -139,8 +135,32 @@ class _Portal {
         return NativePortal.getWindowHeight(window);
     }
 
+    public static function getFramebufferWidth(window: PtWindow): Int {
+        return NativePortal.getFramebufferWidth(window);
+    }
+
+    public static function getFramebufferHeight(window: PtWindow): Int {
+        return NativePortal.getFramebufferHeight(window);
+    }
+
+    public static function useGLContext(window: PtWindow): Int {
+        return NativePortal.useGLContext(window);
+    }
+
+    public static function init(config: PtConfig): Void {
+        NativePortal.init(config);
+    }
+
     public static function shutdown(): Void {
         NativePortal.shutdown();
+    }
+
+    public static function getInputEventCount(window: PtWindow): Int {
+        return NativePortal.getInputEventCount(window);
+    }
+
+    public static function pullInputEvent(window: PtWindow): PtInputEventData {
+        return NativePortal.pullInputEvent(window);
     }
 }
 typedef Portal = _Portal;

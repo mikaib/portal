@@ -34,7 +34,7 @@ class Main {
         2, 1, 3   // Second triangle
     ];
 
-    #if (android)
+    #if (android && !GS_ANDROID_GLES2)
      public var vertexShaderSource: String = "#version 320 es
         precision highp float;
 
@@ -67,7 +67,7 @@ class Main {
             fragColor = texture(uTexture, vTexCoord) * vColour;
         }
     ";
-    #elseif (emscripten)
+    #elseif (emscripten || GS_ANDROID_GLES2)
     public var vertexShaderSource: String = "#version 100
         attribute vec3 aPosition;
         attribute vec4 aColour;
