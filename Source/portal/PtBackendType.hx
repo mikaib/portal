@@ -8,6 +8,9 @@ private extern class NativePtBackendType {}
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')
 @:include('portal.h')
 extern enum abstract PtBackendType(NativePtBackendType) {
+    @:native('PT_BACKEND_NOOP')
+    public var PT_BACKEND_NOOP;
+
     @:native('PT_BACKEND_GLFW')
     public var PT_BACKEND_GLFW;
 

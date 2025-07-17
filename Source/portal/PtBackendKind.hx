@@ -13,4 +13,7 @@ extern enum abstract PtBackendKind(NativePtBackendKind) {
 
     @:native('PT_BACKEND_KIND_MOBILE')
     public var PT_BACKEND_KIND_MOBILE;
+
+    @:native('PT_BACKEND_KIND_HEADLESS')
+    public var PT_BACKEND_KIND_HEADLESS;
 }

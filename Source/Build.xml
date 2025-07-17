@@ -22,6 +22,7 @@
         <files id="portal">
             <compilerflag value="-I${portal_native}" />
             <file name="${portal_native}/portal.c" />
+            <file name="${portal_native}/portal_noop.c" />
             <file name="${portal_native}/portal_glfw.c" if="PT_GLFW" />
             <file name="${portal_native}/portal_android.c" if="PT_ANDROID" />
 
