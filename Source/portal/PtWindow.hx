@@ -36,6 +36,22 @@ extern class NativePtWindow {
         return Portal.getWindowHeight(this);
     }
 
+    inline public function getUsableWidth(): Int {
+        return Portal.getUsableWidth(this);
+    }
+
+    inline public function getUsableHeight(): Int {
+        return Portal.getUsableHeight(this);
+    }
+
+    inline public function getUsableXOffset(): Int {
+        return Portal.getUsableXOffset(this);
+    }
+
+    inline public function getUsableYOffset(): Int {
+        return Portal.getUsableYOffset(this);
+    }
+
     inline public function getFramebufferWidth(): Int {
         return Portal.getFramebufferWidth(this);
     }

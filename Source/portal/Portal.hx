@@ -51,6 +51,10 @@ extern class Portal {
     @:native('pt_poll_events')
     public static function pollEvents(window: PtWindow): Void;
 
+    // Window dimensions = the size of the window (which the platform *may* scale)
+    // Framebuffer dimensions = the *full* size of the framebuffer
+    // Usable dimensions = framebuffer dimensions in which nothing should obstruct what is drawn (e.g phone cutouts)
+
     @:native('pt_get_window_width')
     public static function getWindowWidth(window: PtWindow): Int;
 
@@ -62,6 +66,18 @@ extern class Portal {
 
     @:native('pt_get_framebuffer_height')
     public static function getFramebufferHeight(window: PtWindow): Int;
+
+    @:native('pt_get_usable_width')
+    public static function getUsableWidth(window: PtWindow): Int;
+
+    @:native('pt_get_usable_height')
+    public static function getUsableHeight(window: PtWindow): Int;
+
+    @:native('pt_get_usable_xoffset')
+    public static function getUsableXOffset(window: PtWindow): Int;
+
+    @:native('pt_get_usable_yoffset')
+    public static function getUsableYOffset(window: PtWindow): Int;
 
     @:native('pt_use_gl_context')
     public static function useGLContext(window: PtWindow): Int;
@@ -141,6 +157,22 @@ class _Portal {
 
     public static function getFramebufferHeight(window: PtWindow): Int {
         return NativePortal.getFramebufferHeight(window);
+    }
+
+    public static function getUsableWidth(window: PtWindow): Int {
+        return NativePortal.getUsableWidth(window);
+    }
+
+    public static function getUsableHeight(window: PtWindow): Int {
+        return NativePortal.getUsableHeight(window);
+    }
+
+    public static function getUsableXOffset(window: PtWindow): Int {
+        return NativePortal.getUsableXOffset(window);
+    }
+
+    public static function getUsableYOffset(window: PtWindow): Int {
+        return NativePortal.getUsableYOffset(window);
     }
 
     public static function useGLContext(window: PtWindow): Int {
