@@ -15,20 +15,18 @@ class PortalBuild {
             var useX11 = Context.defined("PT_X11");
 
             if (!useWayland && !useX11) {
-                var waylandCheckPs = new Process("echo", ["$WAYLAND_DISPLAY"]);
-                waylandCheckPs.exitCode(true);
+                var xorgCheckPs = new Process("sh", ["-c", "pgrep -x Xorg || pgrep -x Xwayland"]);
+                xorgCheckPs.exitCode(true);
 
-                var waylandCheckOut = waylandCheckPs.stdout.readAll().toString();
-                if (waylandCheckOut.length > 0) {
-                    Compiler.define("PT_WAYLAND");
-                    useWayland = true;
-
-                    Sys.println("[portal] Auto-detected Wayland!");
-                } else {
+                var xorgCheckOut = xorgCheckPs.stdout.readAll().toString();
+                if (xorgCheckOut.length > 0) {
+                    Sys.println("[portal] Auto-detected X11!");
                     Compiler.define("PT_X11");
                     useX11 = true;
-
-                    Sys.println("[portal] No Wayland detected, falling back to X11!");
+                } else {
+                    Sys.println("[portal] Auto-detected Wayland!");
+                    Compiler.define("PT_WAYLAND");
+                    useWayland = true;
                 }
             }
 
