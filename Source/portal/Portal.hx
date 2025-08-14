@@ -122,6 +122,36 @@ extern class Portal {
 
     @:native('pt_set_video_mode')
     public static function setVideoMode(window: PtWindow, mode: PtVideoMode): Void;
+
+    @:native('pt_show_window')
+    public static function showWindow(window: PtWindow): Void;
+
+    @:native('pt_hide_window')
+    public static function hideWindow(window: PtWindow): Void;
+
+    @:native('pt_minimize_window')
+    public static function minimizeWindow(window: PtWindow): Void;
+
+    @:native('pt_maximize_window')
+    public static function maximizeWindow(window: PtWindow): Void;
+
+    @:native('pt_restore_window')
+    public static function restoreWindow(window: PtWindow): Void;
+
+    @:native('pt_focus_window')
+    public static function focusWindow(window: PtWindow): Void;
+
+    @:native('pt_is_window_maximized')
+    public static function isWindowMaximized(window: PtWindow): Int;
+
+    @:native('pt_is_window_minimized')
+    public static function isWindowMinimized(window: PtWindow): Int;
+
+    @:native('pt_is_window_focused')
+    public static function isWindowFocused(window: PtWindow): Int;
+
+    @:native('pt_is_window_visible')
+    public static function isWindowVisible(window: PtWindow): Int;
 }
 
 #if (PT_STUB)
@@ -253,6 +283,46 @@ class _Portal {
 
     public static function setVideoMode(window: PtWindow, mode: PtVideoMode): Void {
         NativePortal.setVideoMode(window, mode);
+    }
+
+    public static function showWindow(window: PtWindow): Void {
+        NativePortal.showWindow(window);
+    }
+
+    public static function hideWindow(window: PtWindow): Void {
+        NativePortal.hideWindow(window);
+    }
+
+    public static function minimizeWindow(window: PtWindow): Void {
+        NativePortal.minimizeWindow(window);
+    }
+
+    public static function maximizeWindow(window: PtWindow): Void {
+        NativePortal.maximizeWindow(window);
+    }
+
+    public static function restoreWindow(window: PtWindow): Void {
+        NativePortal.restoreWindow(window);
+    }
+
+    public static function focusWindow(window: PtWindow): Void {
+        NativePortal.focusWindow(window);
+    }
+
+    public static function isWindowMaximized(window: PtWindow): Int {
+        return NativePortal.isWindowMaximized(window);
+    }
+
+    public static function isWindowMinimized(window: PtWindow): Int {
+        return NativePortal.isWindowMinimized(window);
+    }
+
+    public static function isWindowFocused(window: PtWindow): Int {
+        return NativePortal.isWindowFocused(window);
+    }
+
+    public static function isWindowVisible(window: PtWindow): Int {
+        return NativePortal.isWindowVisible(window);
     }
 }
 typedef Portal = _Portal;

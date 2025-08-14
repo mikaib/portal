@@ -78,6 +78,46 @@ extern class NativePtWindow {
         Portal.setVideoMode(this, mode);
     }
 
+    inline public function show(): Void {
+        Portal.showWindow(this);
+    }
+
+    inline public function hide(): Void {
+        Portal.hideWindow(this);
+    }
+
+    inline public function minimize(): Void {
+        Portal.minimizeWindow(this);
+    }
+
+    inline public function maximize(): Void {
+        Portal.maximizeWindow(this);
+    }
+
+    inline public function restore(): Void {
+        Portal.restoreWindow(this);
+    }
+
+    inline public function focus(): Void {
+        Portal.focusWindow(this);
+    }
+
+    inline public function isMaximized(): Bool {
+        return Portal.isWindowMaximized(this) == 1;
+    }
+
+    inline public function isMinimized(): Bool {
+        return Portal.isWindowMinimized(this) == 1;
+    }
+
+    inline public function isFocused(): Bool {
+        return Portal.isWindowFocused(this) == 1;
+    }
+
+    inline public function isVisible(): Bool {
+        return Portal.isWindowVisible(this) == 1;
+    }
+
 }
 
 typedef PtWindow = cpp.Star<NativePtWindow>;
