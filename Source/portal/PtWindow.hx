@@ -118,6 +118,14 @@ extern class NativePtWindow {
         return Portal.isWindowVisible(this) == 1;
     }
 
+    inline public function enableThrottle(fps: Int): Void {
+        Portal.enableThrottle(this, fps);
+    }
+
+    inline public function disableThrottle(): Void {
+        Portal.disableThrottle(this);
+    }
+
 }
 
 typedef PtWindow = cpp.Star<NativePtWindow>;

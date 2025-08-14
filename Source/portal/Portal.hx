@@ -100,10 +100,10 @@ extern class Portal {
     public static function pullInputEvent(window: PtWindow): PtInputEventData;
 
     @:native('pt_enable_throttle')
-    public static function enableThrottle(fps: Int): Void;
+    public static function enableThrottle(window: PtWindow, fps: Int): Void;
 
     @:native('pt_disable_throttle')
-    public static function disableThrottle(): Void;
+    public static function disableThrottle(window: PtWindow): Void;
 
     @:native('pt_sleep')
     public static function sleep(seconds: Float): Void;
@@ -253,12 +253,12 @@ class _Portal {
         return NativePortal.pullInputEvent(window);
     }
 
-    public static function enableThrottle(fps: Int): Void {
-        NativePortal.enableThrottle(fps);
+    public static function enableThrottle(window: PtWindow, fps: Int): Void {
+        NativePortal.enableThrottle(window, fps);
     }
 
-    public static function disableThrottle(): Void {
-        NativePortal.disableThrottle();
+    public static function disableThrottle(window: PtWindow): Void {
+        NativePortal.disableThrottle(window);
     }
 
     public static function sleep(seconds: Float): Void {
