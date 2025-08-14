@@ -6,8 +6,6 @@ package portal;
 @:unreflective
 @:structAccess
 extern class NativePtWindow {
-    public var backend: PtBackend;
-
     inline public function swapBuffers(): Void {
         Portal.swapBuffers(this);
     }
@@ -67,6 +65,19 @@ extern class NativePtWindow {
     inline public function pullInputEvent(): PtInputEventData {
         return Portal.pullInputEvent(this);
     }
+
+    inline public function setWindowTitle(title: String): Void {
+        Portal.setWindowTitle(this, title);
+    }
+
+    inline public function setWindowSize(width: Int, height: Int): Void {
+        Portal.setWindowSize(this, width, height);
+    }
+
+    inline public function setVideoMode(mode: PtVideoMode): Void {
+        Portal.setVideoMode(this, mode);
+    }
+
 }
 
 typedef PtWindow = cpp.Star<NativePtWindow>;

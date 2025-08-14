@@ -1,4 +1,6 @@
 package portal;
+import genesis.GsClearFlags;
+import genesis.GsCommandList;
 
 @:buildXml('<include name="${haxelib:portal}/Source/Build.xml" />')
 @:include('portal.h')
@@ -37,7 +39,10 @@ extern class Portal {
     public static function getOptimalBackendType(): PtBackendType;
 
     @:native('pt_create_window')
-    public static function createWindow(title: String, width: Int, height: Int): PtWindow;
+    private static function nativeCreateWindow(title: String, width: Int, height: Int, flags: PtWindowFlags): PtWindow;
+    public static inline function createWindow(title: String, width: Int, height: Int, flags: PtWindowFlags = PT_WINDOW_FLAGS_NONE): PtWindow {
+        return nativeCreateWindow(title, width, height, untyped __cpp__("(PtWindowFlags){0}", flags));
+    }
 
     @:native('pt_destroy_window')
     public static function destroyWindow(window: PtWindow): Void;
@@ -94,6 +99,29 @@ extern class Portal {
     @:native('pt_pull_input_event')
     public static function pullInputEvent(window: PtWindow): PtInputEventData;
 
+    @:native('pt_enable_throttle')
+    public static function enableThrottle(fps: Int): Void;
+
+    @:native('pt_disable_throttle')
+    public static function disableThrottle(): Void;
+
+    @:native('pt_sleep')
+    public static function sleep(seconds: Float): Void;
+
+    @:native('pt_get_time')
+    public static function getTime(): Float;
+
+    @:native('pt_get_window_handle')
+    public static function getWindowHandle(window: PtWindow): cpp.Star<cpp.Void>;
+
+    @:native('pt_set_window_title')
+    public static function setWindowTitle(window: PtWindow, title: cpp.ConstCharStar): Void;
+
+    @:native('pt_set_window_size')
+    public static function setWindowSize(window: PtWindow, width: Int, height: Int): Void;
+
+    @:native('pt_set_video_mode')
+    public static function setVideoMode(window: PtWindow, mode: PtVideoMode): Void;
 }
 
 #if (PT_STUB)
@@ -123,8 +151,8 @@ class _Portal {
         return NativePortal.getOptimalBackendType();
     }
 
-    public static function createWindow(title: String, width: Int, height: Int): PtWindow {
-        return NativePortal.createWindow(title, width, height);
+    public static function createWindow(title: String, width: Int, height: Int, flags: PtWindowFlags = PT_WINDOW_FLAGS_NONE): PtWindow {
+        return NativePortal.createWindow(title, width, height, flags);
     }
 
     public static function destroyWindow(window: PtWindow): Void {
@@ -193,6 +221,38 @@ class _Portal {
 
     public static function pullInputEvent(window: PtWindow): PtInputEventData {
         return NativePortal.pullInputEvent(window);
+    }
+
+    public static function enableThrottle(fps: Int): Void {
+        NativePortal.enableThrottle(fps);
+    }
+
+    public static function disableThrottle(): Void {
+        NativePortal.disableThrottle();
+    }
+
+    public static function sleep(seconds: Float): Void {
+        NativePortal.sleep(seconds);
+    }
+
+    public static function getTime(): Float {
+        return NativePortal.getTime();
+    }
+
+    public static function getWindowHandle(window: PtWindow): cpp.Star<cpp.Void> {
+        return NativePortal.getWindowHandle(window);
+    }
+
+    public static function setWindowTitle(window: PtWindow, title: String): Void {
+        NativePortal.setWindowTitle(window, title);
+    }
+
+    public static function setWindowSize(window: PtWindow, width: Int, height: Int): Void {
+        NativePortal.setWindowSize(window, width, height);
+    }
+
+    public static function setVideoMode(window: PtWindow, mode: PtVideoMode): Void {
+        NativePortal.setVideoMode(window, mode);
     }
 }
 typedef Portal = _Portal;
